@@ -17,7 +17,6 @@
     "type": "git",
     "url": "git@github.com:AlmostSire/almost-cli.git"
   },
-
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
