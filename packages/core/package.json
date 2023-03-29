@@ -1,6 +1,6 @@
 {
   "name": "@almost-cli/core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "almost-cli core",
   "author": "almost.wang",
   "homepage": "",
@@ -26,9 +26,6 @@
   },
   "scripts": {
     "test": "node ./__tests__/core.test.js"
-  },
-  "dependencies": {
-   
   },
   "gitHead": "baf6deb1cdc99ff8abf414c3cd064856e0ae9db7"
 }
