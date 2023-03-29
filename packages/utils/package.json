@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:AlmostSire/almost-cli.git",
+    "url": "git@github.com:AlmostSire/almost-cli.git"
   },
 
   "publishConfig": {
