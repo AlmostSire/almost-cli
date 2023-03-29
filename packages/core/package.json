@@ -13,8 +13,13 @@
   "files": [
     "lib"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:AlmostSire/almost-cli.git",
+  },
+
   "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "node ./__tests__/core.test.js"
@@ -22,5 +27,5 @@
   "dependencies": {
     "@almost-cli/utils": "^0.0.4"
   },
-  "gitHead": "e731a443c68568e91e8f90639c63dc4239582c90"
+  "gitHead": "5d16273fa5d9581ead94000ec1686f7659ddcf63"
 }
