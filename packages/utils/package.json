@@ -25,7 +25,7 @@
     "test": "node ./__tests__/utils.test.js"
   },
   "dependencies": {
-    "@almost-cli/core": "^0.0.8"
+   
   },
   "gitHead": "baf6deb1cdc99ff8abf414c3cd064856e0ae9db7"
 }
