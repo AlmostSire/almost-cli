@@ -20,6 +20,6 @@
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
-   "@almost-cli/utils": "0.0.1"
+    "@almost-cli/utils": "^0.0.1"
   }
 }
