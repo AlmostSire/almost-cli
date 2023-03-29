@@ -1,12 +1,5 @@
-'use strict';
+#! /usr/bin/env node
 
-module.exports = core;
 
-function core() {
-  
-  return 'Hello from core';
-
-}
-
-core();
+console.log('hello almost-cli')
 
