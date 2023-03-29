@@ -21,5 +21,6 @@
   },
   "dependencies": {
     "@almost-cli/utils": "^0.0.2"
-  }
+  },
+  "gitHead": "a16987783720dc66c8b84108f5a5a4ffb45fc1bb"
 }
