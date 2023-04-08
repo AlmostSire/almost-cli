@@ -1,0 +1,29 @@
+{
+  "name": "@almost-cli/init",
+  "version": "0.0.9",
+  "description": "init project or component",
+  "author": "almost.wang <almost.wang@cloudwise.com>",
+  "homepage": "https://github.com/AlmostSire/almost-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlmostSire/almost-cli.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@almost-cli/init.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/AlmostSire/almost-cli/issues"
+  }
+}
