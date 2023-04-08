@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = utils;
-
 function utils() {
   return 'Hello from utils';
   
 }
 
-utils();
+module.exports = {
+  utils
+};
+

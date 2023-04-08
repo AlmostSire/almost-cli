@@ -13,6 +13,9 @@
     "lerna": "^6.6.1"
   },
   "workspaces": [
-    "packages/*"
+    "core/*",
+    "commands/*",
+    "models/*",
+    "utils/*"
   ]
 }
