@@ -7,14 +7,14 @@ const os = require('os');
 const semver = require('semver');
 const colors = require('colors');
 const pathExists = require('path-exists').sync;
-//const minimist = require('minimist');
 const rootCheck = require('root-check');
 const dotenv = require('dotenv');
 const { createCommand } = require('commander')
 
 const log = require('@almost-cli/log');
 const { getNpmLatestVersion } = require('@almost-cli/get-npm-info');
-const init = require('@almost-cli/init')
+const init = require('@almost-cli/init');
+const exec = require('@almost-cli/exec');
 
 const pkg = require('../package.json');
 const { LOWEST_NODE_VERSION, DEFAULT_CLI_HOME } = require('./const');
@@ -24,13 +24,7 @@ const program = createCommand();
 
 async function core() {
   try {
-    checkPkgVersion();
-    checkNodeVersion();
-    checkRoot();
-    checkUserHome();
-    //checkInputArgs();
-    checkEnv();
-    await checkGlobalUpdate();
+    await prepare();
     registerCommand();
   } catch (e) {
     log.error(e.message)
@@ -62,29 +56,14 @@ function checkUserHome() {
   }
 }
 
-// function checkInputArgs() {
-//   const args = minimist(process.argv.slice(2));
-//   checkArgs(args)
-// }
-
-// function checkArgs(args) {
-//   if (args.debug || args.d) {
-//     process.env.LOG_LEVEL = 'verbose';
-//   } else {
-//     process.env.LOG_LEVEL = 'info';
-//   }
-//   log.level = process.env.LOG_LEVEL;
-// }
-
 function checkEnv() {
   const dotenvPath = path.resolve(userHome, '.env');
   if (pathExists(dotenvPath)) {
     dotenv.config({
       path: dotenvPath
     })
-    createDefaultConfig();
-    log.verbose('环境变量', process.env.CLI_HOME_PATH)
   }
+  createDefaultConfig();
 }
 
 function createDefaultConfig() {
@@ -97,6 +76,7 @@ function createDefaultConfig() {
     cliConfig['cliHome'] = path.join(userHome, DEFAULT_CLI_HOME)
   }
   process.env.CLI_HOME_PATH = cliConfig.cliHome;
+  console.log(process.env.CLI_HOME_PATH)
 }
 
 async function checkGlobalUpdate() {
@@ -114,17 +94,27 @@ async function checkGlobalUpdate() {
   }
 }
 
+async function prepare() {
+  checkPkgVersion();
+  checkNodeVersion();
+  checkRoot();
+  checkUserHome();
+  checkEnv();
+  await checkGlobalUpdate();
+}
+
 function registerCommand() {
   program
     .name(Object.keys(pkg.bin)[0])
     .usage("<command> [options]")
     .version(pkg.version)
     .option('-d, --debug', "是否开启调试模式", false)
+    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径')
 
   program
     .command('init [projectName]')
     .option('-f, --force', '是否强制初始化项目')
-    .action(init)
+    .action(exec)
 
 
   // 开启 debug 模式
@@ -139,6 +129,11 @@ function registerCommand() {
     log.verbose('test')
   })
 
+  // 指定 targetPath
+  program.on('option:targetPath', function (targetPath) {
+    process.env.CLI_TARGET_PATH = targetPath;
+  })
+
   // 未知命令监听
   program.on('command:*', function (cmds) {
     const availableCommands = program.commands.map(cmd => cmd.name());
@@ -147,13 +142,11 @@ function registerCommand() {
       log.info("可用命令：", availableCommands.join(','))
     }
   })
-
   // 参数解析
   program.parse(process.argv);
-
   if (program.args.length < 1) {
     program.outputHelp();
     console.log()
-  } 
+  }
 
 }

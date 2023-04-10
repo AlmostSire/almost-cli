@@ -29,6 +29,7 @@
   },
   "gitHead": "baf6deb1cdc99ff8abf414c3cd064856e0ae9db7",
   "dependencies": {
+    "@almost-cli/exec": "^0.0.9",
     "@almost-cli/get-npm-info": "^0.0.9",
     "@almost-cli/init": "^0.0.9",
     "@almost-cli/log": "^0.0.9",
@@ -36,7 +37,6 @@
     "commander": "^10.0.0",
     "dotenv": "^16.0.3",
     "import-local": "^3.1.0",
-    "minimist": "^1.2.8",
     "path-exists": "^4.0.0",
     "root-check": "1.0.0",
     "semver": "^7.3.8"
