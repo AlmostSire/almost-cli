@@ -13,11 +13,10 @@ const { createCommand } = require('commander')
 
 const log = require('@almost-cli/log');
 const { getNpmLatestVersion } = require('@almost-cli/get-npm-info');
-const init = require('@almost-cli/init');
 const exec = require('@almost-cli/exec');
 
 const pkg = require('../package.json');
-const { LOWEST_NODE_VERSION, DEFAULT_CLI_HOME } = require('./const');
+const { DEFAULT_CLI_HOME } = require('./const');
 
 const userHome = os.homedir();
 const program = createCommand();
@@ -35,16 +34,6 @@ function checkPkgVersion() {
   log.notice('almost-cli', pkg.version)
 }
 
-function checkNodeVersion() {
-  // 1、获取当前Node版本号
-  const currentVersion = process.version;
-  // 2、获取最低Node版本号
-  const lowestVersion = LOWEST_NODE_VERSION;
-  // 3、比对最低版本号
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(colors.red(`almost-cli 需要安装 v${lowestVersion} 以上版本的 Node.js`))
-  }
-}
 
 function checkRoot() {
   rootCheck();
@@ -76,7 +65,6 @@ function createDefaultConfig() {
     cliConfig['cliHome'] = path.join(userHome, DEFAULT_CLI_HOME)
   }
   process.env.CLI_HOME_PATH = cliConfig.cliHome;
-  console.log(process.env.CLI_HOME_PATH)
 }
 
 async function checkGlobalUpdate() {
@@ -96,7 +84,6 @@ async function checkGlobalUpdate() {
 
 async function prepare() {
   checkPkgVersion();
-  checkNodeVersion();
   checkRoot();
   checkUserHome();
   checkEnv();
@@ -126,7 +113,6 @@ function registerCommand() {
       process.env.LOG_LEVEL = 'info';
     }
     log.level = process.env.LOG_LEVEL;
-    log.verbose('test')
   })
 
   // 指定 targetPath
@@ -148,5 +134,4 @@ function registerCommand() {
     program.outputHelp();
     console.log()
   }
-
 }

@@ -1,7 +1,7 @@
 {
-  "name": "@almost-cli/init",
+  "name": "@almost-cli/command",
   "version": "0.0.9",
-  "description": "init project or component",
+  "description": "almost-cli command class",
   "author": "almost.wang <almost.wang@cloudwise.com>",
   "homepage": "https://github.com/AlmostSire/almost-cli#readme",
   "license": "ISC",
@@ -21,13 +21,14 @@
     "url": "git+https://github.com/AlmostSire/almost-cli.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@almost-cli/init.test.js"
+    "test": "node ./__tests__/@almost-cli/command.test.js"
   },
   "bugs": {
     "url": "https://github.com/AlmostSire/almost-cli/issues"
   },
   "dependencies": {
-    "@almost-cli/command": "^0.0.9",
-    "@almost-cli/log": "^0.0.9"
+    "@almost-cli/log": "^0.0.9",
+    "colors": "1.4.0",
+    "semver": "7.3.8"
   }
 }

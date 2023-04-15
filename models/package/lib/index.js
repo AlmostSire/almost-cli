@@ -67,7 +67,7 @@ class Package {
   async update() {
     // 1、获取最新的npm模块版本号
     const latestPackageVersion = await getNpmLatestVersion(this.packageName)
-    // 2、获取最新版本对应的路径
+    // 2、获取最新版本对应的缓存路径
     const latestFilePath = this.getSpecificCacheFilePath(latestPackageVersion);
     // 3、判断路径是否存在，不存在时安装最新版本
     if (!pathExists(latestFilePath)) {
