@@ -1,7 +1,7 @@
 {
-  "name": "@almost-cli/init",
+  "name": "@almost-cli/request",
   "version": "0.0.9",
-  "description": "init project or component",
+  "description": "almost-cli request util",
   "author": "almost.wang <almost.wang@cloudwise.com>",
   "homepage": "https://github.com/AlmostSire/almost-cli#readme",
   "license": "ISC",
@@ -21,19 +21,12 @@
     "url": "git+https://github.com/AlmostSire/almost-cli.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@almost-cli/init.test.js"
+    "test": "node ./__tests__/@almost-cli/request.test.js"
   },
   "bugs": {
     "url": "https://github.com/AlmostSire/almost-cli/issues"
   },
   "dependencies": {
-    "@almost-cli/command": "^0.0.9",
-    "@almost-cli/log": "^0.0.9",
-    "@almost-cli/package": "^0.0.9",
-    "@almost-cli/request": "^0.0.9",
-    "@almost-cli/utils": "^0.0.9",
-    "fs-extra": "^11.1.1",
-    "inquirer": "8.2.5",
-    "semver": "^7.4.0"
+    "axios": "^1.3.5"
   }
 }

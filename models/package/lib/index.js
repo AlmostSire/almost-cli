@@ -59,7 +59,7 @@ class Package {
       registry: getDefaultRegistry(),
       pkgs: [{
         name: this.packageName,
-        version: version || this.version
+        version: version || this.packageVersion
       }]
     })
   }
